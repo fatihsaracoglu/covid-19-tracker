@@ -5,6 +5,8 @@ The application provides daily updates about COVID-19 cases in Turkey, and also 
 You can visit running application:  
 [https://covid-19-worldwide-tracker.herokuapp.com/](https://covid-19-worldwide-tracker.herokuapp.com/)
 
+API for data: `https://api.covid19api.com/summary`
+
 
 ## Installation
 
