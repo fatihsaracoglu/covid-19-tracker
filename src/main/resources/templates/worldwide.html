@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Worldwide | COVID-19 Tracker</title>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+        <link rel="stylesheet" type="text/css" th:href="@{/css/worldwide.css}" />
+    </head>
+    <body>
+        <div class="worldwide container">
+            <input class="form-control" id="search-input" type="text" placeholder="Search..." />
+            <button class="btn btn-primary scroll-top" data-scroll="up" type="button">
+                <i class="fas fa-chevron-up"></i>
+            </button>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Country</th>
+                            <th>Last Update Date</th>
+                            <th>Confirmed</th>
+                            <th>Deaths</th>
+                            <th>Recovered</th>
+                        </tr>
+                    </thead>
+                    <tbody class="global-table">
+                        <tr th:each="countyStat : ${countryStatistics}">
+                            <td th:text="${countyStat.country}"></td>
+                            <td th:text="${countyStat.lastUpdate}"></td>
+                            <td th:text="${countyStat.confirmed}"></td>
+                            <td th:text="${countyStat.deaths}"></td>
+                            <td th:text="${countyStat.recovered}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script th:src="@{/js/main.js}"></script>
+    </body>
+</html>

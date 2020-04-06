@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page | COVID-19 Tracker</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.0/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+</head>
+<body>
+    <div class="header">
+        <img th:src="@{/img/coronavirus.jpg}"/>
+        <div class="text">
+            <b>Current cases of</b>
+            <br />
+            <b>Coronavirus Pandemic</b>
+            <br />
+            <b>in Turkey and</b>
+            <br />
+            <b>worldwide</b>
+            <br />
+            <a th:href="@{/worldwide}"><button type="button" class="btn btn-light">Go to Global Table</button></a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p class="main-title"><b>TURKEY</b></p>
+                <hr />
+                    <div class="row">
+                    <div class="col confirmed">
+                        <p class="title">Total Confirmed</p>
+                        <b counter="0">0</b>
+                    </div>
+                    <div class="col death">
+                        <p class="title">Total Death</p>
+                        <b counter="0">0</b>
+                    </div>
+                    <div class="col recovered">
+                        <p class="title">Total Recovered</p>
+                        <b counter="0">0</b>
+                    </div>
+                    </div>
+            </div>
+            <div class="col">
+                <p class="main-title"><b>WORLDWIDE</b></p>
+                <hr />
+                <div class="row">
+                    <div class="col w-confirmed">
+                        <p class="title">Total Confirmed</p>
+                        <b counter="0">0</b>
+                    </div>
+                    <div class="col w-death">
+                        <p class="title">Total Death</p>
+                        <b counter="0">0</b>
+                    </div>
+                    <div class="col w-recovered">
+                        <p class="title">Total Recovered</p>
+                        <b counter="0">0</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy Made by <a href="https://github.com/fatihsaracoglu">Fatih Saraçoğlu</a></p>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script>
+        var confirmed = [[${turkeyStat.confirmed}]];
+        var death = [[${turkeyStat.deaths}]];
+        var recovered = [[${turkeyStat.recovered}]];
+
+        var wConfirmed = [[${global.confirmed}]];
+        var wDeath = [[${global.deaths}]];
+        var wRecovered = [[${global.recovered}]];
+
+        function confirmedCounter() {
+            $('.confirmed b').animate({
+                counter: confirmed
+            }, {
+                duration: 2500,
+                easing: 'swing',
+                step: function(now) {
+                    $(this).text(Math.ceil(now));
+                },
+                complete: confirmedCounter
+            });
+        }
+
+        function deathCounter() {
+            $('.death b').animate({
+                counter: death
+            }, {
+                duration: 1000,
+                easing: 'swing',
+                step: function(now) {
+                    $(this).text(Math.ceil(now));
+                },
+                complete: deathCounter
+            });
+        }
+
+        function recoveredCounter() {
+            $('.recovered b').animate({
+                counter: recovered
+            }, {
+                duration: 1000,
+                easing: 'swing',
+                step: function(now) {
+                    $(this).text(Math.ceil(now));
+                },
+                complete: recoveredCounter
+            });
+        }
+
+        function wConfirmedCounter() {
+            $('.w-confirmed b').animate({
+                counter: wConfirmed
+            }, {
+                duration: 4500,
+                easing: 'swing',
+                step: function(now) {
+                    $(this).text(Math.ceil(now));
+                },
+                complete: wConfirmedCounter
+            });
+        }
+
+        function wDeathCounter() {
+            $('.w-death b').animate({
+                counter: wDeath
+            }, {
+                duration: 3000,
+                easing: 'swing',
+                step: function(now) {
+                    $(this).text(Math.ceil(now));
+                },
+                complete: wDeathCounter
+            });
+        }
+
+        function wRecoveredCounter() {
+            $('.w-recovered b').animate({
+                counter: wRecovered
+            }, {
+                duration: 3000,
+                easing: 'swing',
+                step: function(now) {
+                    $(this).text(Math.ceil(now));
+                },
+                complete: wRecoveredCounter
+            });
+        }
+
+        confirmedCounter();
+        deathCounter();
+        recoveredCounter();
+
+        wConfirmedCounter();
+        wDeathCounter();
+        wRecoveredCounter();
+
+    </script>
+</body>
+</html>

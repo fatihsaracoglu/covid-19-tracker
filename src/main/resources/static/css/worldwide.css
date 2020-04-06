@@ -1,0 +1,39 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-image: url("../img/background.png");
+    background-attachment: fixed;
+}
+
+.worldwide .table {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.worldwide .table tbody {
+    color: white;
+}
+
+.worldwide input {
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 5% !important;
+    margin-bottom: 3%;
+}
+
+.scroll-top {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 5%;
+    right: 3%;
+    display: none;
+}
+
+.scroll-top i {
+    display: inline-block;
+    color: #FFFFFF;
+}
